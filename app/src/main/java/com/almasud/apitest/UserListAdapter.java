@@ -1,8 +1,9 @@
 package com.almasud.apitest;
 
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -41,8 +42,8 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        User user = mUsers.get(position);
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
+        final User user = mUsers.get(position);
         String photoUrl = MainActivity.BASE_URL.concat(user.getPhoto());
 
         if (holder instanceof VendorViewHolder) {
@@ -61,6 +62,13 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Picasso.get().load(photoUrl).placeholder(R.drawable.profile_image)
                     .into(viewHolder.customerBinding.userProfileImage);
         }
+        // Event for click on each user
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), "Name: " + user.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

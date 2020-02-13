@@ -8,9 +8,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="3dp"
+        android:padding="5dp"
         android:orientation="horizontal"
-        android:background="@color/colorAccent">
+        android:background="@color/colorAccent"
+        android:shadowColor="#B70A50">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_profile_image"
@@ -28,8 +30,8 @@
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`Name: ` + user.name, default=`User name`}"
-                android:textSize="18sp"
+                android:text="@{user.name, default=`User name`}"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"/>
 
@@ -39,14 +41,18 @@
                 android:layout_height="wrap_content"
                 android:text="@{`Type: ` + user.type, default=`User type`}"
                 android:textSize="16sp"
+                android:textStyle="italic"
+                android:padding="3dp"
                 android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{`Phone: ` + user.phone, default=`User phone number`}"
+                android:drawableStart="@drawable/ic_phone_msg"
+                android:text="@{` ` + user.phone, default=`User phone number`}"
                 android:textSize="16sp"
+                android:padding="3dp"
                 android:textColor="#ffffff"/>
 
         </LinearLayout>
